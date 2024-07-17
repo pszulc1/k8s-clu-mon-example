@@ -164,7 +164,7 @@ kubectl port-forward service/vector-aggregator 9099:api -n monitoring
 vector top --url http://localhost:9099/graphql
 # metrics components observation
 vector tap --url http://localhost:9099/graphql internal_metrics | jq
-vector tap --url http://localhost:9099/graphql --inputs-of prom_exporter | jq
+vector tap --url http://localhost:9099/graphql --inputs-of prometheus_exporter | jq
 # logs component observation
 vector tap --url http://localhost:9099/graphql k8s-clu-mon_logs | jq
 
@@ -185,13 +185,14 @@ kubectl port-forward service/prometheus 9090:web -n monitoring
 # loki test instance port forward for read and write
 kubectl port-forward service/read 3100:80 -n monitoring
 kubectl port-forward service/write 3200:80 -n monitoring
-# feeding with fake logs
+# feeding with fake logs, repeat to get many entries
 jsonnet --ext-str date=$(date +%s%N) fake-log-line.jsonnet | curl -v -H "Content-Type: application/json" http://localhost:3200/loki/api/v1/push -d @-
 # some queries
 curl --get -s http://localhost:3100/loki/api/v1/labels | jq
 curl --get -s http://localhost:3100/loki/api/v1/series | jq
 # LogQL
-curl --get -s http://localhost:3100/loki/api/v1/query_range --data-urlencode 'query={agent="the-one", colour="blue"}' --data-urlencode 'start=1711372081000000000' | jq '.data.result'
+# make sure to adjust start appropriately to avoid "the query time range exceeds the limit" message
+curl --get -s http://localhost:3100/loki/api/v1/query_range --data-urlencode 'query={agent="the-one"}' --data-urlencode 'start=1721217600000000000' | jq '.data.result'
 
 # grafana test instance for convenient analysis
 kubectl port-forward service/grafana 3000:3000 -n monitoring
