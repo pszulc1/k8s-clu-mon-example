@@ -19,13 +19,7 @@ tk env remove environments/default/ # unnecessary environment
 
 echo 'vendor/' >> .gitignore
 
-
-# !!!
-# here k8s-clu-mon lib as a local reference (temporary)
-# !!! finally should be jb install(ed) from github ................
-jb install ../k8s-clu-mon   # github.com/!!!!-PROPER-LINK-NEEDED-!!!!
-
-
+jb install github.com/pszulc1/k8s-clu-mon@v0.1.1
 ```
 
 ## Cluster-specific configuration of environments
@@ -201,7 +195,7 @@ Use pods labels `app.kubernetes.io/*` promoted to metrics labels `app_kubernetes
 You can also use the `job` label, which is by default set as a value of `app.kubernetes.io/name` service label.  
 If the label is not defined or its value is empty `job` will be defined as the name of the service monitored by Service Monitor.  
 Use the `k8s_clu_mon_*` labels to filter the cluster from which the data is taken.  
-See [k8s-clu-mon/docs/README.md](github.com/!!!!-PROPER-LINK-NEEDED-!!!!/docs) for more information.  
+See [k8s-clu-mon/docs/README.md](https://github.com/pszulc1/k8s-clu-mon/blob/main/docs/README.md) for more information.  
 
 Use Prometheus Grafana Cloud or Grafana test instance (in test mode).  
 
