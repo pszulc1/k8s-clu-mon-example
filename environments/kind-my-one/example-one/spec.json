@@ -1,0 +1,15 @@
+{
+  "apiVersion": "tanka.dev/v1alpha1",
+  "kind": "Environment",
+  "metadata": {
+    "name": "environments/kind-my-one/example-one",
+    "namespace": "environments/kind-my-one/example-one/main.jsonnet"
+  },
+  "spec": {
+    "apiServer": "https://127.0.0.1:35657",
+    "namespace": "monitoring",
+    "applyStrategy": "server",
+    "resourceDefaults": {},
+    "expectVersions": {}
+  }
+}

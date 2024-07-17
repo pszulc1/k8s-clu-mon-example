@@ -1,0 +1,1 @@
+gke_opalcbox_europe-west1-c_stdprod1

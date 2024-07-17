@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uke-ftps-12586-exposed
+  labels:
+    app: opalcbox
+    opal: uke-ftps-12586-exposed
+    metrics_exposed: "true"
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - port: 9113
+      name: metrics
+      protocol: TCP
+      targetPort: 9113
+  selector:
+    app: opalcbox
+    component: uke-ftps
+    opal: uke-ftps-12586

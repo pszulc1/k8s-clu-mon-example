@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uke-ftps-3333
+  labels:
+    app: opalcbox
+    component: uke-ftps
+    opal: uke-ftps-3333
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - port: 80
+      name: http
+    - port: 3737
+      name: api
+      protocol: TCP
+      targetPort: 9113
+  selector:
+    app: opalcbox
+    component: uke-ftps
+    opal: uke-ftps-3333

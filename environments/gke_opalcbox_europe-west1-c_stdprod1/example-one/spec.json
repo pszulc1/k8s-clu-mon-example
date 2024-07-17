@@ -1,0 +1,15 @@
+{
+  "apiVersion": "tanka.dev/v1alpha1",
+  "kind": "Environment",
+  "metadata": {
+    "name": "environments/gke_opalcbox_europe-west1-c_stdprod1/example-one",
+    "namespace": "environments/gke_opalcbox_europe-west1-c_stdprod1/example-one/main.jsonnet"
+  },
+  "spec": {
+    "apiServer": "https://34.34.171.127",
+    "namespace": "monitoring",
+    "applyStrategy": "server",
+    "resourceDefaults": {},
+    "expectVersions": {}
+  }
+}

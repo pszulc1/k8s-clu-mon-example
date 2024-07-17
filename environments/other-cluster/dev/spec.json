@@ -1,0 +1,14 @@
+{
+  "apiVersion": "tanka.dev/v1alpha1",
+  "kind": "Environment",
+  "metadata": {
+    "name": "environments/other-cluster/dev"
+  },
+  "spec": {
+    "apiServer": "https://35.2.2.2",
+    "namespace": "test-namespace",
+    "resourceDefaults": {},
+    "expectVersions": {},
+    "applyStrategy": "server"
+  }
+}
